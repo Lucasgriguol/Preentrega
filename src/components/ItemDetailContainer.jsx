@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const ItemDetailContainer = () => {
-  const { id } = useParams(); // 'id' es el itemId
+  const { id } = useParams();
   const [item, setItem] = useState(null);
-  const [loading, setLoading] = useState(true); // Para manejar el estado de carga
+  const [loading, setLoading] = useState(true);
 
-  // Función asíncrona que simula una petición a una API para obtener el detalle del producto
   const fetchItemDetails = async (itemId) => {
-    // Mock de productos con detalles
     const allItems = [
       { id: 1, name: 'Toyota Supra', category: '1', price: 2000, description: 'El legendario Toyota Supra, con un diseño aerodinámico y un potente motor que lo convierte en un ícono de velocidad. Un modelo altamente apreciado por los fanáticos de los autos deportivos.', image: '/images/moderno supra.webp' },
       { id: 2, name: 'Copo Camaro', category: '2', price: 3000, description: 'El Chevrolet Camaro de la vieja escuela, con una estética clásica y un motor rudo, perfecto para los amantes de los muscle cars. Este modelo celebra la herencia del Camaro.', image: '/images/clasico copo camaro.webp' },
@@ -28,11 +26,10 @@ const ItemDetailContainer = () => {
       { id: 16, name: 'Custom Small Block', category: '3', price: 4000, description: 'Una edición muy especial con un motor pequeño pero poderoso, para los fanáticos de las personalizaciones únicas. Un modelo ideal para los amantes de los Hot Wheels con detalles exclusivos.', image: '/images/especial small.webp' },
     ];
 
-    // Retornamos una promesa que resuelve después de 1 segundo
     return new Promise((resolve) => {
       setTimeout(() => {
         const foundItem = allItems.find(item => item.id === parseInt(itemId));
-        resolve(foundItem); // Resolvemos la promesa con el producto encontrado
+        resolve(foundItem);
       }, 1000);
     });
   };
@@ -40,13 +37,13 @@ const ItemDetailContainer = () => {
   useEffect(() => {
     const loadItemDetails = async () => {
       setLoading(true);
-      const data = await fetchItemDetails(id); // Esperamos a que la promesa se resuelva
-      setItem(data); // Guardamos el detalle del producto en el estado
-      setLoading(false); // Indicamos que la carga ha terminado
+      const data = await fetchItemDetails(id);
+      setItem(data);
+      setLoading(false);
     };
 
     loadItemDetails();
-  }, [id]); // Dependemos del 'id' para actualizar los detalles cuando cambiamos de producto
+  }, [id]);
 
   return (
     <div className="item-detail-container">

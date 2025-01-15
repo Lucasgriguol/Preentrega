@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const ItemListContainer = () => {
-  const { id } = useParams(); // 'id' es el categoryId (de la URL)
+  const { id } = useParams();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Lista de productos con las categorías bien definidas
   const allItems = [
     { id: 1, name: 'Toyota Supra', category: '1', price: 2000, image: '/images/moderno supra.webp' },
     { id: 2, name: 'Copo Camaro', category: '2', price: 3000, image: '/images/clasico copo camaro.webp' },
@@ -26,7 +25,6 @@ const ItemListContainer = () => {
     { id: 16, name: 'Custom Small Block', category: '3', price: 4000, image: '/images/especial small.webp' },
   ];
 
-  // Función para filtrar productos según la categoría
   const fetchItems = async (categoryId) => {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -41,22 +39,20 @@ const ItemListContainer = () => {
   useEffect(() => {
     const loadItems = async () => {
       setLoading(true);
-      const data = await fetchItems(id); // Filtramos los productos por categoría
+      const data = await fetchItems(id);
       setItems(data);
       setLoading(false);
     };
 
     loadItems();
-  }, [id]); // Dependemos de 'id' para que se actualice cuando cambie la categoría
+  }, [id]);
 
   return (
     <div className="container">
-      {/* Contenedor de bienvenida */}
       <div className="welcome-message-container">
         <h1 className="welcome-message">¡Bienvenido a mi tienda de Hot Wheels!</h1>
       </div>
 
-      {/* Contenedor de productos */}
       <div className="product-cards-container">
         <h2>
           {id === '1' ? 'Modernos' : id === '2' ? 'Clásicos' : id === '3' ? 'Edición Especial' : 'Todos los productos'}
