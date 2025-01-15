@@ -23,7 +23,7 @@ const ItemListContainer = () => {
     { id: 13, name: 'Ford Ranger Raptor', category: '1', price: 2000, image: '/images/moderno raptor.webp' },
     { id: 14, name: 'Ford Escort R52000', category: '2', price: 3000, image: '/images/clasico escort.webp' },
     { id: 15, name: 'Brick and Motor', category: '3', price: 4000, image: '/images/especial motor.webp' },
-    { id: 16, name: 'Firestorm', category: '1', price: 2000, image: '/images/moderno firestorm.webp' },
+    { id: 16, name: 'Custom Small Block', category: '3', price: 4000, image: '/images/especial small.webp' },
   ];
 
   // Función para filtrar productos según la categoría
