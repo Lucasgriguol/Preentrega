@@ -9,20 +9,20 @@ const ItemListContainer = () => {
   const allItems = [
     { id: 1, name: 'Toyota Supra', category: '1', price: 2000, image: '/images/moderno supra.webp' },
     { id: 2, name: 'Copo Camaro', category: '2', price: 3000, image: '/images/clasico copo camaro.webp' },
-    { id: 3, name: 'Dodge Charger Hellcat', category: '1', price: 2000, image: '/images/moderno charger.webp' },
+    { id: 3, name: 'Dodge Charger Hellcat', category: '5', price: 2000, image: '/images/moderno charger.webp' },
     { id: 4, name: 'Grand Cross', category: '3', price: 4000, image: '/images/especial cross.webp' },
     { id: 5, name: 'McLaren P1', category: '1', price: 2000, image: '/images/moderno mclaren p1.webp' },
     { id: 6, name: 'Dodge Viper', category: '2', price: 3000, image: '/images/clasico viper.webp' },
     { id: 7, name: 'Speed Driver', category: '3', price: 4000, image: '/images/especial driver.webp' },
     { id: 8, name: 'El Viento', category: '3', price: 4000, image: '/images/especial el viento.webp' },
-    { id: 9, name: 'Honda Civic Si', category: '1', price: 2000, image: '/images/moderno civic.webp' },
+    { id: 9, name: 'Honda Civic Si', category: '5', price: 2000, image: '/images/moderno civic.webp' },
     { id: 10, name: 'Layin Lowrider', category: '2', price: 3000, image: '/images/clasico lowrider.webp' },
     { id: 11, name: 'Tesla Model V', category: '1', price: 2000, image: '/images/moderno tesla.webp' },
     { id: 12, name: 'Slide Kick', category: '3', price: 4000, image: '/images/especial kick.webp' },
     { id: 13, name: 'Ford Ranger Raptor', category: '1', price: 2000, image: '/images/moderno raptor.webp' },
     { id: 14, name: 'Ford Escort R52000', category: '2', price: 3000, image: '/images/clasico escort.webp' },
-    { id: 15, name: 'Brick and Motor', category: '3', price: 4000, image: '/images/especial motor.webp' },
-    { id: 16, name: 'Custom Small Block', category: '3', price: 4000, image: '/images/especial small.webp' },
+    { id: 15, name: 'Brick and Motor', category: '4', price: 4000, image: '/images/especial motor.webp' },
+    { id: 16, name: 'Custom Small Block', category: '4', price: 4000, image: '/images/especial small.webp' },
   ];
 
   const fetchItems = async (categoryId) => {
@@ -51,11 +51,24 @@ const ItemListContainer = () => {
     <div className="container">
       <div className="welcome-message-container">
         <h1 className="welcome-message">¡Bienvenido a mi tienda de Hot Wheels!</h1>
+
+        <div className="category-buttons-container">
+          {/* Botones para las categorías */}
+          <button className="category-button" onClick={() => window.location.href = '/category/1'}>
+            Modernos
+          </button>
+          <button className="category-button" onClick={() => window.location.href = '/category/2'}>
+            Clásicos
+          </button>
+          <button className="category-button" onClick={() => window.location.href = '/category/3'}>
+            Edición Especial
+          </button>
+        </div>
       </div>
 
       <div className="product-cards-container">
         <h2>
-          {id === '1' ? 'Modernos' : id === '2' ? 'Clásicos' : id === '3' ? 'Edición Especial' : 'Todos los productos'}
+          {id === '1' ? 'Modernos' : id === '2' ? 'Clásicos' : id === '3' ? 'Edición Especial' : id === '4' ? 'Nuevos productos' :  id === '5' ? 'Destacados' : 'Todos los productos'}
         </h2>
 
         {loading ? (
