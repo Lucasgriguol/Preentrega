@@ -1,0 +1,10 @@
+<h1>Bienvenido a la página Home</h1>
+
+{{#if user}}
+  <p>Hola, {{user.first_name}} {{user.last_name}}!</p>
+  <a href="/profile">Ver perfil</a> |
+  <a href="/logout">Cerrar sesión</a>
+{{else}}
+  <p>No estás logueado.</p>
+  <a href="/login">Iniciar sesión</a> | <a href="/register">Registrarse</a>
+{{/if}}
