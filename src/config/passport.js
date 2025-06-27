@@ -6,7 +6,7 @@ import { createHash, isValidPassword } from '../utils/passwordUtils.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
-// Local Strategy (login)
+// Local Strategy 
 passport.use('login', new LocalStrategy(
   { usernameField: 'email' },
   async (email, password, done) => {
@@ -22,7 +22,6 @@ passport.use('login', new LocalStrategy(
   }
 ));
 
-// JWT Strategy (protect routes)
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: process.env.JWT_SECRET || 'your_jwt_secret'

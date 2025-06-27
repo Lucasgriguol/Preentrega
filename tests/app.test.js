@@ -1,4 +1,3 @@
-// tests/app.test.js
 import request from 'supertest';
 import app from '../src/app.js';
 import mongoose from 'mongoose';
@@ -14,8 +13,6 @@ const testUser = {
 let jwtToken;
 
 beforeAll(async () => {
-  // Opcional: conecta a base test distinta para no afectar producción
-  // await mongoose.connect('mongodb://127.0.0.1:27017/test-db');
 });
 
 afterAll(async () => {

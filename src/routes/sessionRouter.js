@@ -27,7 +27,7 @@ router.post('/register', async (req, res) => {
             role: 'user'
         });
 
-        res.redirect('/login'); // Redirigimos al login después de registrarse
+        res.redirect('/login');
     } catch (error) {
         res.status(500).render('error', { message: error.message });
     }
@@ -64,7 +64,7 @@ router.post('/login', async (req, res) => {
 });
 
 
-// Current (validar JWT)
+// Current
 router.get(
     '/current',
     passport.authenticate('jwt', { session: false }),

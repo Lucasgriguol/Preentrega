@@ -1,4 +1,3 @@
-// src/routes/viewsRouter.js
 import { Router } from 'express';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
@@ -8,7 +7,7 @@ dotenv.config();
 const router = Router();
 const SECRET = process.env.JWT_SECRET || 'coderSecretJWT';
 
-// Middleware para proteger vistas que requieren login
+// Middleware
 function authMiddleware(req, res, next) {
   const token = req.cookies.token;
   if (!token) {
@@ -24,7 +23,7 @@ function authMiddleware(req, res, next) {
   }
 }
 
-// Home: muestra usuario si hay token válido
+// Home
 router.get('/', (req, res) => {
   const token = req.cookies.token;
   if (!token) {
@@ -39,28 +38,28 @@ router.get('/', (req, res) => {
   }
 });
 
-// Login (form)
+// Login
 router.get('/login', (req, res) => {
   res.render('login', { title: 'Iniciar Sesión' });
 });
 
-// Register (form)
+// Register
 router.get('/register', (req, res) => {
   res.render('register', { title: 'Registro de Usuario' });
 });
 
-// Profile (requiere estar logueado)
+// Profile
 router.get('/profile', authMiddleware, (req, res) => {
   res.render('profile', { title: 'Perfil de Usuario', user: req.user });
 });
 
-// Logout: borra cookie y redirige a home
+// Logout
 router.get('/logout', (req, res) => {
   res.clearCookie('token');
   res.redirect('/');
 });
 
-// Error genérico
+// Error
 router.get('/error', (req, res) => {
   res.render('error', { title: 'Error', message: 'Algo salió mal.' });
 });
